@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.TextStyle
 import java.util.*
@@ -24,6 +25,8 @@ fun CalendarView(modifier: Modifier = Modifier) {
 
     // Calculate days and first day of the month
     val daysInMonth = displayedMonth.lengthOfMonth()
+
+    val today = YearMonth.now().atDay(LocalDate.now().dayOfMonth)
     val firstDayOfMonth = displayedMonth.atDay(1).dayOfWeek.value
     val daysOfWeek = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
@@ -87,15 +90,22 @@ fun CalendarView(modifier: Modifier = Modifier) {
 
             // Days of the month
             items(daysInMonth) { day ->
+                val currentDay = displayedMonth.atDay(day + 1)
+                val isToday = currentDay == today
                 Text(
                     text = "${day + 1}",
+                    color = if (isToday) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .size(40.dp)
-                        .background(MaterialTheme.colorScheme.primaryContainer)
+                        .background(
+                            if (isToday) MaterialTheme.colorScheme.secondaryContainer
+                            else MaterialTheme.colorScheme.primaryContainer
+                        )
                         .wrapContentSize(Alignment.Center)
                 )
             }
+
             items(daysAfter) { day ->
                 Text(
                     text = "${day + 1}",
