@@ -27,6 +27,12 @@ fun CalendarView(modifier: Modifier = Modifier) {
     val firstDayOfMonth = displayedMonth.atDay(1).dayOfWeek.value
     val daysOfWeek = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
+    val previousMonth = displayedMonth.minusMonths(1)
+    val daysInPreviousMonth = previousMonth.lengthOfMonth()
+    val daysBefore = firstDayOfMonth - 1
+    val totalGridItems = 7 * ((daysBefore + daysInMonth) / 7 + 1)
+    val daysAfter = totalGridItems - daysBefore - daysInMonth
+
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -65,23 +71,40 @@ fun CalendarView(modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(4.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
+
         ) {
-            // Spaces before the first day of the month
-            items(firstDayOfMonth - 1) {
-                Box(modifier = Modifier.height(40.dp))
+            items(daysBefore) { index ->
+                val day = daysInPreviousMonth - daysBefore + 1 + index
+                Text(
+                    text = "$day",
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f), // Couleur grisée
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .wrapContentSize(Alignment.Center)
+                )
             }
 
             // Days of the month
             items(daysInMonth) { day ->
-                Box(
-                    contentAlignment = Alignment.Center,
+                Text(
+                    text = "${day + 1}",
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
                         .size(40.dp)
                         .background(MaterialTheme.colorScheme.primaryContainer)
-
-                ) {
-                    Text(text = "${day + 1}") //Show day's number
-                }
+                        .wrapContentSize(Alignment.Center)
+                )
+            }
+            items(daysAfter) { day ->
+                Text(
+                    text = "${day + 1}",
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f), // Couleur grisée
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .wrapContentSize(Alignment.Center)
+                )
             }
         }
 
