@@ -1,31 +1,124 @@
 # CalendarView with Jetpack Compose
 
-A simple and customizable calendar built with **Jetpack Compose** in Kotlin. This project demonstrates how to create a dynamic calendar with month navigation and a responsive UI.
+A **simple**, **customizable**, and **scalable** calendar built with **Jetpack Compose** in Kotlin. This project demonstrates how to create a dynamic calendar with **month navigation**, a responsive UI, and a modular structure following **clean architecture** principles.
 
-## Features
-- Displays a calendar grid for the current month.
-- Navigation buttons to switch between months.
-- Highlights the current month and dynamically adjusts for the number of days in each month.
+![Snapshot-Calendar-Jetpack-Compose-github](https://github.com/user-attachments/assets/5de56713-40ce-4d4e-9b20-a159ac97c68e)
 
-## Requirements
-- Android 8.0 (API 26) or higher.
-- Kotlin 1.8 or higher.
-- Jetpack Compose 1.4 or higher.
+----------
 
-## Demo
-https://github.com/user-attachments/assets/5f95ad1b-f262-4f49-95b3-a3b3437edb8e
+## 🚀 **Features**
 
-## How to Use
+-   Displays a **calendar grid** for the current month.
+-   **Fixed 6-row grid layout** for consistent design, including days from the previous and next months.
+-   Navigation buttons to **switch between months**.
+-   Highlights the **current day** with a circular background.
+-   Days from the **current month** are displayed in bold, while those from adjacent months are grayed out.
+-   **Clean Architecture** implementation for better maintainability and scalability.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/calendar-view-compose.git
-   
-2. Open the project in Android Studio.
+----------
 
-3. Build and run the project on an emulator or physical device.
+## 📂 **Architecture Overview**
 
-4. The CalendarView composable will display a calendar for the current month with buttons to navigate to previous or next months.
+This project follows the principles of **Clean Architecture**, splitting the codebase into layers for clarity and reusability:
 
+1.  **Domain Layer:**
+    
+    -   Contains the core business logic (e.g., `generateCalendarData`).
+    -   Decoupled from UI frameworks for easy testing and adaptability.
+2.  **Presentation Layer:**
+    
+    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`, `CalendarFooter`).
+    -   Built entirely with **Jetpack Compose**.
+3.  **Utils:**
+    
+    -   Includes helper functions for reusable logic (e.g., calendar data generation).
 
-# Happy coding! 🎉
+----------
+
+## 📋 **Requirements**
+
+-   **Android 8.0 (API 26)** or higher.
+-   **Kotlin 1.8** or higher.
+-   **Jetpack Compose 1.4** or higher.
+
+----------
+
+## 🎥 **Demo**
+
+https://github.com/user-attachments/assets/45e149d7-1426-42fd-9bd2-e5840899eb7e
+
+----------
+
+## 🛠 **How to Use**
+
+1.  **Clone the repository:**
+    
+
+    
+
+    
+    `git clone https://github.com/your-username/calendar-view-compose.git` 
+    
+2.  **Open the project in Android Studio.**
+    
+3.  **Build and run** the project on an emulator or physical device.
+    
+4.  The `CalendarView` composable will display a calendar for the current month, including:
+    
+    -   Buttons to navigate to previous and next months.
+    -   A highlight for the current day with a circular marker.
+
+----------
+
+## 💡 **Code Structure**
+
+### 📂 Domain Layer (`domain`)
+
+Handles business logic and data processing:
+
+-   **`CalendarLogic.kt`**: Contains the `generateCalendarData` function, ensuring a consistent 6-row grid with dynamically calculated days.
+
+### 📂 Presentation Layer (`presentation`)
+
+Contains the UI components:
+
+-   **Components (`components`)**:
+    -   `CalendarHeader`: Displays the month and year with navigation buttons.
+    -   `DaysOfWeek`: Displays the days of the week.
+    -   `CalendarGrid`: Renders the calendar grid for the current month.
+    -   `CalendarFooter`: Contains navigation actions like "Today", "Previous", and "Next".
+-   **Screens (`screen`)**:
+    -   `CalendarView`: The main screen composable that integrates all components.
+
+### 📂 Utils (`utils`)
+
+Houses helper utilities:
+
+-   **`generateCalendarData.kt`**: Provides the days for the current, previous, and next months to populate the grid.
+
+----------
+
+## 🧪 **How It Works**
+
+1.  **Dynamic Grid**: Always displays 6 rows (42 cells) to maintain a consistent layout.
+2.  **Highlighting**:
+    -   **Current Day**: Highlighted with a circular background.
+    -   **Current Month Days**: Shown in bold.
+    -   **Adjacent Month Days**: Shown in gray.
+3.  **Clean Architecture**: Ensures a modular and testable codebase.
+
+----------
+
+## 🤝 **Contributing**
+
+We welcome contributions! If you find a bug or have suggestions for improvements, feel free to open an issue or submit a pull request.
+
+----------
+
+## 📜 **License**
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+----------
+
+## 🎉 Happy coding!
