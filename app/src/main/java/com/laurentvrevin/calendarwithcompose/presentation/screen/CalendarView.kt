@@ -4,135 +4,48 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.laurentvrevin.calendarwithcompose.presentation.components.CalendarFooter
+import com.laurentvrevin.calendarwithcompose.presentation.components.CalendarGrid
+import com.laurentvrevin.calendarwithcompose.presentation.components.CalendarHeader
+import com.laurentvrevin.calendarwithcompose.presentation.components.DaysOfWeek
+import com.laurentvrevin.calendarwithcompose.utils.generateCalendarData
 import java.time.LocalDate
 import java.time.YearMonth
-import java.time.format.TextStyle
-import java.util.*
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CalendarView(modifier: Modifier = Modifier) {
-
     var displayedMonth by remember { mutableStateOf(YearMonth.now()) }
-
-    // Calculate days and first day of the month
-    val daysInMonth = displayedMonth.lengthOfMonth()
-
-    val today = YearMonth.now().atDay(LocalDate.now().dayOfMonth)
-    val firstDayOfMonth = displayedMonth.atDay(1).dayOfWeek.value
-    val daysOfWeek = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
-
-    val previousMonth = displayedMonth.minusMonths(1)
-    val daysInPreviousMonth = previousMonth.lengthOfMonth()
-    val daysBefore = firstDayOfMonth - 1
-    val totalGridItems = 7 * ((daysBefore + daysInMonth) / 7 + 1)
-    val daysAfter = totalGridItems - daysBefore - daysInMonth
+    val today = LocalDate.now()
+    val calendarData = generateCalendarData(displayedMonth)
 
     Column(
         modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFF7EDE2))
             .padding(16.dp)
     ) {
-        Text(
-            text = "${
-                displayedMonth.month.getDisplayName(
-                    TextStyle.FULL,
-                    Locale.ENGLISH
-                )
-            } ${displayedMonth.year}",
-            style = MaterialTheme.typography.displayMedium,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+        CalendarHeader(
+            displayedMonth = displayedMonth
         )
-        // Navigate between months
-
         Spacer(modifier = Modifier.height(16.dp))
-
-        // Days of the week
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            daysOfWeek.forEach { day ->
-                Text(
-                    text = day,
-                    modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
-
+        DaysOfWeek()
         Spacer(modifier = Modifier.height(8.dp))
-
-        // Calendar Grid
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(7), //
-            modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(4.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-
-        ) {
-            items(daysBefore) { index ->
-                val day = daysInPreviousMonth - daysBefore + 1 + index
-                Text(
-                    text = "$day",
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f), // Couleur grisée
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .wrapContentSize(Alignment.Center)
-                )
-            }
-
-            // Days of the month
-            items(daysInMonth) { day ->
-                val currentDay = displayedMonth.atDay(day + 1)
-                val isToday = currentDay == today
-                Text(
-                    text = "${day + 1}",
-                    color = if (isToday) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .background(
-                            if (isToday) MaterialTheme.colorScheme.secondaryContainer
-                            else MaterialTheme.colorScheme.primaryContainer
-                        )
-                        .wrapContentSize(Alignment.Center)
-                )
-            }
-
-            items(daysAfter) { day ->
-                Text(
-                    text = "${day + 1}",
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f), // Couleur grisée
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .wrapContentSize(Alignment.Center)
-                )
-            }
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Bottom
-        ) {
-            Button(onClick = { displayedMonth = displayedMonth.minusMonths(1) }) {
-                Text("<")
-            }
-            Button(onClick = { displayedMonth = YearMonth.now() }) {
-                Text("Today")
-            }
-            Button(onClick = { displayedMonth = displayedMonth.plusMonths(1) }) {
-                Text(">")
-            }
-        }
-
+        CalendarGrid(
+            calendarData = calendarData,
+            today = today,
+            displayedMonth = displayedMonth
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        CalendarFooter(
+            onPreviousMonth = { displayedMonth = displayedMonth.minusMonths(1) },
+            onNextMonth = { displayedMonth = displayedMonth.plusMonths(1) },
+            onToday = { displayedMonth = YearMonth.now() },
+        )
     }
 }

@@ -6,10 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.laurentvrevin.calendarwithcompose.presentation.screen.CalendarView
 import com.laurentvrevin.calendarwithcompose.presentation.ui.theme.CalendarWithComposeTheme
@@ -24,6 +27,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 48.dp)
+                    .background(Color(MaterialTheme.colorScheme.background.value))
                 ) { innerPadding ->
                     CalendarView(
                         modifier = Modifier.padding(innerPadding)
