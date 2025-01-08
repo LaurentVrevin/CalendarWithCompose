@@ -35,10 +35,10 @@ fun CalendarView(modifier: Modifier = Modifier) {
             text = "${
                 displayedMonth.month.getDisplayName(
                     TextStyle.FULL,
-                    Locale.getDefault()
+                    Locale.ENGLISH
                 )
             } ${displayedMonth.year}",
-            style = MaterialTheme.typography.displayLarge,
+            style = MaterialTheme.typography.displayMedium,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         // Navigate between months
