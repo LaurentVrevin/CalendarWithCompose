@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import java.time.DayOfWeek
@@ -17,9 +16,10 @@ import java.util.*
 @Composable
 fun DaysOfWeek() {
     val daysOfWeek = DayOfWeek.values().map {
-        it.getDisplayName(TextStyle.SHORT, Locale.getDefault())
+        it.getDisplayName(TextStyle.SHORT, Locale.ENGLISH)
     }
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+    Row(modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween) {
         daysOfWeek.forEach { day ->
             Text(
                 text = day,

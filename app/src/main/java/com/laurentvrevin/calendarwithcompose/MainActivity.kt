@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 48.dp)
-                    .background(Color(MaterialTheme.colorScheme.background.value))
                 ) { innerPadding ->
                     CalendarView(
                         modifier = Modifier.padding(innerPadding)
