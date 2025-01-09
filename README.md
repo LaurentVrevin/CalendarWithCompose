@@ -44,7 +44,7 @@ This project follows the principles of **Clean Architecture**, splitting the cod
 
 ## 🎥 **Demo**
 
-https://github.com/user-attachments/assets/d77aee80-b0f9-4f8e-bdf4-a3e18e7bd98c
+https://github.com/user-attachments/assets/42cc5beb-2f09-40d3-b4d2-232a89966119
 
 ----------
 
@@ -75,7 +75,7 @@ https://github.com/user-attachments/assets/d77aee80-b0f9-4f8e-bdf4-a3e18e7bd98c
 
 Handles business logic and data processing:
 
--   **`CalendarLogic.kt`**: Contains the `generateCalendarData` function, ensuring a consistent 6-row grid with dynamically calculated days.
+
 
 ### 📂 Presentation Layer (`presentation`)
 
