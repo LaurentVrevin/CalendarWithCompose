@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.laurentvrevin.calendarwithcompose.presentation.components.CalendarFooter
 import com.laurentvrevin.calendarwithcompose.presentation.components.CalendarGrid
 import com.laurentvrevin.calendarwithcompose.presentation.components.CalendarHeader
 import com.laurentvrevin.calendarwithcompose.presentation.components.DaysOfWeek
@@ -33,8 +32,11 @@ fun CalendarView(modifier: Modifier = Modifier) {
             .padding(16.dp)
     ) {
         CalendarHeader(
-            displayedMonth = displayedMonth
+            displayedMonth = displayedMonth,
+            onPreviousMonth = { displayedMonth = displayedMonth.minusMonths(1) },
+            onNextMonth = { displayedMonth = displayedMonth.plusMonths(1) },
         )
+        
         Spacer(modifier = Modifier.height(16.dp))
         DaysOfWeek()
 
@@ -49,14 +51,6 @@ fun CalendarView(modifier: Modifier = Modifier) {
                 displayedMonth = displayedMonth
             )
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        CalendarFooter(
-            onPreviousMonth = { displayedMonth = displayedMonth.minusMonths(1) },
-            onNextMonth = { displayedMonth = displayedMonth.plusMonths(1) },
-            onToday = { displayedMonth = YearMonth.now() },
-        )
     }
 }
 @SuppressLint("NewApi")

@@ -13,7 +13,7 @@ fun generateCalendarData(displayedMonth: YearMonth): CalendarData {
 
     val daysBefore = (1..<firstDayOfMonth).map { daysInPreviousMonth - (firstDayOfMonth - 1) + it }
 
-    val totalCells = 42
+    val totalCells = 35
     val daysAfter = totalCells - (daysBefore.size + daysInMonth)
     val daysAfterList = (1..daysAfter).toList()
 
