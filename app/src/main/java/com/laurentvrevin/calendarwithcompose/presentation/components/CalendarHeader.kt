@@ -1,6 +1,7 @@
 package com.laurentvrevin.calendarwithcompose.presentation.components
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
@@ -27,6 +28,7 @@ fun CalendarHeader(
     displayedMonth: YearMonth,
     onPreviousMonth: () -> Unit,
     onNextMonth: () -> Unit,
+    onTitleClick: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -47,7 +49,10 @@ fun CalendarHeader(
 
         Text(
             text = "${displayedMonth.month.getDisplayName(TextStyle.FULL, Locale.ENGLISH)} ${displayedMonth.year}",
-            style = MaterialTheme.typography.displaySmall
+            style = MaterialTheme.typography.displaySmall,
+            modifier = Modifier
+                .clickable(onClick = onTitleClick)
+                .padding(8.dp)
         )
         IconButton(
             onClick = onNextMonth,
@@ -67,5 +72,5 @@ fun CalendarHeader(
 @Preview
 @Composable
 fun CalendarHeaderPreview() {
-    CalendarHeader(displayedMonth = YearMonth.now(), onPreviousMonth = {}, onNextMonth = {})
+    CalendarHeader(displayedMonth = YearMonth.now(), onPreviousMonth = {}, onNextMonth = {}, onTitleClick = {})
 }
