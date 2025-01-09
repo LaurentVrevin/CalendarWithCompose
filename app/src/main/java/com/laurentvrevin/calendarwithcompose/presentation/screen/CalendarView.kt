@@ -68,7 +68,7 @@ fun CalendarView(modifier: Modifier = Modifier) {
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    imageVector = Icons.Default.Refresh, // Icône de mise à jour
+                    imageVector = Icons.Default.Refresh,
                     contentDescription = "Refresh",
                     modifier = Modifier.size(20.dp)
                 )
