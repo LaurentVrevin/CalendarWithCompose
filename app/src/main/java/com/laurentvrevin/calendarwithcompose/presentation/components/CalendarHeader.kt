@@ -50,7 +50,7 @@ fun CalendarHeader(
             style = MaterialTheme.typography.displaySmall
         )
         IconButton(
-            onClick = onPreviousMonth,
+            onClick = onNextMonth,
             colors = iconButtonColors(
                 contentColor = Color.Black,
                 containerColor = Color.Transparent)
