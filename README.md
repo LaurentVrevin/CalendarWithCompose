@@ -2,7 +2,7 @@
 
 A **simple**, **customizable**, and **scalable** calendar built with **Jetpack Compose** in Kotlin. This project demonstrates how to create a dynamic calendar with **month navigation**, a responsive UI, and a modular structure following **clean architecture** principles.
 
-![Snapshot-Calendar-Jetpack-Compose-github](https://github.com/user-attachments/assets/5de56713-40ce-4d4e-9b20-a159ac97c68e)
+![Snapshot-Calendar-Jetpack-Compose-github](https://github.com/user-attachments/assets/8c08d600-a828-4a21-9467-7c11402f459c)
 
 ----------
 
@@ -45,7 +45,7 @@ This project follows the principles of **Clean Architecture**, splitting the cod
 
 ## 🎥 **Demo**
 
-https://github.com/user-attachments/assets/45e149d7-1426-42fd-9bd2-e5840899eb7e
+https://github.com/user-attachments/assets/d77aee80-b0f9-4f8e-bdf4-a3e18e7bd98c
 
 ----------
 
