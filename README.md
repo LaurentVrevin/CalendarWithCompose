@@ -9,7 +9,7 @@ A **simple**, **customizable**, and **scalable** calendar built with **Jetpack C
 ## 🚀 **Features**
 
 -   Displays a **calendar grid** for the current month.
--   **Fixed 6-row grid layout** for consistent design, including days from the previous and next months.
+-   **Fixed 5-row grid layout** for consistent design, including days from the previous and next months.
 -   Navigation buttons to **switch between months**.
 -   Highlights the **current day** with a circular background.
 -   Days from the **current month** are displayed in bold, while those from adjacent months are grayed out.
@@ -23,11 +23,10 @@ This project follows the principles of **Clean Architecture**, splitting the cod
 
 1.  **Domain Layer:**
     
-    -   Contains the core business logic (e.g., `generateCalendarData`).
     -   Decoupled from UI frameworks for easy testing and adaptability.
 2.  **Presentation Layer:**
     
-    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`, `CalendarFooter`).
+    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`).
     -   Built entirely with **Jetpack Compose**.
 3.  **Utils:**
     
