@@ -2,14 +2,14 @@
 
 A **simple**, **customizable**, and **scalable** calendar built with **Jetpack Compose** in Kotlin. This project demonstrates how to create a dynamic calendar with **month navigation**, a responsive UI, and a modular structure following **clean architecture** principles.
 
-![Snapshot-Calendar-Jetpack-Compose-github](https://github.com/user-attachments/assets/5de56713-40ce-4d4e-9b20-a159ac97c68e)
+![Snapshot-Calendar-Jetpack-Compose-github](https://github.com/user-attachments/assets/8c08d600-a828-4a21-9467-7c11402f459c)
 
 ----------
 
 ## 🚀 **Features**
 
 -   Displays a **calendar grid** for the current month.
--   **Fixed 6-row grid layout** for consistent design, including days from the previous and next months.
+-   **Fixed 5-row grid layout** for consistent design, including days from the previous and next months.
 -   Navigation buttons to **switch between months**.
 -   Highlights the **current day** with a circular background.
 -   Days from the **current month** are displayed in bold, while those from adjacent months are grayed out.
@@ -23,11 +23,10 @@ This project follows the principles of **Clean Architecture**, splitting the cod
 
 1.  **Domain Layer:**
     
-    -   Contains the core business logic (e.g., `generateCalendarData`).
     -   Decoupled from UI frameworks for easy testing and adaptability.
 2.  **Presentation Layer:**
     
-    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`, `CalendarFooter`).
+    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`).
     -   Built entirely with **Jetpack Compose**.
 3.  **Utils:**
     
@@ -45,7 +44,7 @@ This project follows the principles of **Clean Architecture**, splitting the cod
 
 ## 🎥 **Demo**
 
-https://github.com/user-attachments/assets/45e149d7-1426-42fd-9bd2-e5840899eb7e
+https://github.com/user-attachments/assets/d77aee80-b0f9-4f8e-bdf4-a3e18e7bd98c
 
 ----------
 
