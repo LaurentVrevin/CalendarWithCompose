@@ -13,6 +13,8 @@ A **simple**, **customizable**, and **scalable** calendar built with **Jetpack C
 -   Navigation buttons to **switch between months**.
 -   Highlights the **current day** with a circular background.
 -   Days from the **current month** are displayed in bold, while those from adjacent months are grayed out.
+-   Month and year selection via a **custom picker dialog**.
+-   A "Today" button to reset the calendar to the current month.
 -   **Clean Architecture** implementation for better maintainability and scalability.
 
 ----------
@@ -24,14 +26,16 @@ This project follows the principles of **Clean Architecture**, splitting the cod
 1.  **Domain Layer:**
     
     -   Decoupled from UI frameworks for easy testing and adaptability.
+    -   Handles business logic and reusable utilities.
+    
 2.  **Presentation Layer:**
     
-    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`).
+    -   Manages UI-related components (`CalendarHeader`, `CalendarGrid`, `DaysOfWeek`, `MonthYearPickerDialog`, etc.).
     -   Built entirely with **Jetpack Compose**.
+    
 3.  **Utils:**
     
     -   Includes helper functions for reusable logic (e.g., calendar data generation).
-
 ----------
 
 ## 📋 **Requirements**
@@ -75,7 +79,7 @@ https://github.com/user-attachments/assets/42cc5beb-2f09-40d3-b4d2-232a89966119
 
 Handles business logic and data processing:
 
-
+-   **`CalendarData`**: A data class for representing the calendar's days.
 
 ### 📂 Presentation Layer (`presentation`)
 
@@ -99,7 +103,7 @@ Houses helper utilities:
 
 ## 🧪 **How It Works**
 
-1.  **Dynamic Grid**: Always displays 6 rows (42 cells) to maintain a consistent layout.
+1.  **Dynamic Grid**: Always displays 5 rows (35 cells) to maintain a consistent layout.
 2.  **Highlighting**:
     -   **Current Day**: Highlighted with a circular background.
     -   **Current Month Days**: Shown in bold.
